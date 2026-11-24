@@ -24,7 +24,10 @@ bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
 # --- БАЗА ДАННЫХ ---
-DB_PATH = os.getenv("DB_PATH", "leader_edu_groups.db")
+DB_PATH = os.getenv(
+    "DB_PATH",
+    os.path.join(os.getenv("RAILWAY_VOLUME_MOUNT_PATH", "."), "leader_edu_groups.db"),
+)
 DB_DIR = os.path.dirname(DB_PATH)
 if DB_DIR:
     os.makedirs(DB_DIR, exist_ok=True)
